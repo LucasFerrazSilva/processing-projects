@@ -1,0 +1,1 @@
+class HitLeftBorderException extends Exception {}

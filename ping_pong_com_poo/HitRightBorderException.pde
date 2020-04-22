@@ -1,0 +1,1 @@
+class HitRightBorderException extends Exception {}
