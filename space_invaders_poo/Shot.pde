@@ -10,12 +10,14 @@ class Shot {
   private Position position;
   private Color cor;
   private Speed speed;
+  private boolean hit;
   
   
   public Shot(Position position) {
     this.position = position;
     this.cor = new Color(COLOR_RED, COLOR_GREEN, COLOR_BLUE);
     this.speed = new Speed(0, SPEEDY);
+    this.hit = false;
   }
   
   
@@ -26,6 +28,18 @@ class Shot {
   
   public void move() {
     this.position.move(speed);
+  }
+  
+  public boolean wasHit() {
+    return this.hit;
+  }
+  
+  public Position getPosition() {
+    return this.position;
+  }
+  
+  public void setAsHit() {
+    this.hit = true;
   }
   
 }

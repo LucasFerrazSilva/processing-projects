@@ -48,8 +48,10 @@ class Spaceship {
     for(int i = 0; i < this.shotsFired; i++) {
       Shot shot = this.shots[i];
       
-      shot.draw();
-      shot.move();
+      if(!shot.wasHit()) {
+        shot.draw();
+        shot.move();
+      }
     }
   }
   
@@ -103,5 +105,13 @@ class Spaceship {
     return this.position.getX() + Spaceship.WINGS_WIDTH/2 + Spaceship.SPEEDX <= width;
   }
   
+  
+  public Shot[] getShots() {
+    return this.shots;
+  }
+  
+  public int getShotsFired() {
+    return this.shotsFired;  
+  }
   
 }
