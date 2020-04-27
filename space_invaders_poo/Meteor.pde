@@ -10,7 +10,6 @@ class Meteor {
   private float meteorWidth;
   private float meteorHeight;
   private Color cor;
-  private boolean destroyed;
   
   
   public Meteor(float speedY) {
@@ -19,7 +18,6 @@ class Meteor {
     this.position = new Position(random(meteorWidth/2, width - meteorWidth/2), -meteorHeight);
     this.speed = new Speed(0, speedY);
     this.cor = new Color(COLOR);
-    this.destroyed = false;
   }
   
   
@@ -48,20 +46,12 @@ class Meteor {
       throw new GameOverException();
   }
   
-  public boolean wasDestroyed() {
-    return destroyed;
-  }
-  
   public boolean hits(Shot shot) {
     Position shotPosition = shot.getPosition();
     
     return 
       shotPosition.getX() >= this.position.getX() - this.meteorWidth/2 && shotPosition.getX() <= this.position.getX() + this.meteorWidth/2 
       && shotPosition.getY() >= this.position.getY() - this.meteorHeight/2 && shotPosition.getY() <= this.position.getY() + this.meteorHeight/2;
-  }
-  
-  public void setAsDestroyed() {
-    this.destroyed = true;
   }
 
 }

@@ -13,26 +13,19 @@ class CollisionSeeker {
   
   
   public void seek() {
-    Shot[] shots = this.spaceship.getShots();
-    int shotsFired = this.spaceship.getShotsFired();
+    ArrayList<Shot> shots = this.spaceship.getShots();    
+    ArrayList<Meteor> meteors = this.meteorsManager.getMeteors();
     
-    Meteor[] meteors = this.meteorsManager.getMeteors();
-    int meteorsIndex = this.meteorsManager.getMeteorsIndex();
-    
-    for(int i = 0; i < shotsFired; i++) {
-      Shot shot = shots[i];
+    for(int i = shots.size() - 1; i >= 0; i--) {
+      Shot shot = shots.get(i);
       
-      if(!shot.wasHit()) {
-        for(int j = 0; j < meteorsIndex; j++) {
-          Meteor meteor = meteors[j];
-          
-          if(!meteor.wasDestroyed()) {
-            if(meteor.hits(shot)) {
-              meteor.setAsDestroyed();
-              shot.setAsHit();
-              this.score.increase();
-            }
-          }
+      for(int j = meteors.size() - 1; j >= 0; j--) {
+        Meteor meteor = meteors.get(j);
+        
+        if(meteor.hits(shot)) {
+          meteors.remove(meteor);
+          shots.remove(shot);
+          this.score.increase();
         }
       }
     }

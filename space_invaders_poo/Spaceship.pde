@@ -4,16 +4,14 @@ class Spaceship {
   final static int WIDTH = HEIGHT/3;
   final static int WINGS_WIDTH = HEIGHT;
   final static int WINGS_HEIGHT = HEIGHT/2;
-  final static int SPEEDX = 20;
+  final static int SPEEDX = 10;
   final static int MARGIN_BOTTOM = 20;
-  final static int MAX_NUMBER_OF_SHOTS = 1000;
   
   private Position position;
   private Speed speed;
   private Color cor;
   private Color wingsColor;
-  private Shot[] shots;
-  private int shotsFired;
+  private ArrayList<Shot> shots;
   
   
   public Spaceship() {
@@ -21,8 +19,7 @@ class Spaceship {
     this.speed = new Speed(Spaceship.SPEEDX, 0);
     this.cor = new Color(10, 50, 200);
     this.wingsColor = new Color(20, 80, 255);
-    this.shots = new Shot[MAX_NUMBER_OF_SHOTS];
-    this.shotsFired = 0;
+    this.shots = new ArrayList<Shot>();
   }
   
   
@@ -45,13 +42,9 @@ class Spaceship {
   }
   
   private void drawShots() {
-    for(int i = 0; i < this.shotsFired; i++) {
-      Shot shot = this.shots[i];
-      
-      if(!shot.wasHit()) {
-        shot.draw();
-        shot.move();
-      }
+    for(Shot shot: shots) {
+      shot.draw();
+      shot.move();
     }
   }
   
@@ -73,10 +66,8 @@ class Spaceship {
   }
   
   private void shoot() {
-    Position shotPosition = new Position(this.position.getX(), this.position.getY() - Spaceship.HEIGHT/2);
-    Shot shot = new Shot(shotPosition);
-    
-    this.shots[this.shotsFired++] = shot;
+    Position shotPosition = new Position(this.position.getX(), this.position.getY() - Spaceship.HEIGHT/2);    
+    this.shots.add(new Shot(shotPosition));
   }
   
   private void moveToTheLeft() {
@@ -106,12 +97,8 @@ class Spaceship {
   }
   
   
-  public Shot[] getShots() {
+  public ArrayList<Shot> getShots() {
     return this.shots;
-  }
-  
-  public int getShotsFired() {
-    return this.shotsFired;  
   }
   
 }
