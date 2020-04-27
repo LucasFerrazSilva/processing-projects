@@ -9,7 +9,7 @@ void initUmbrellaVariables() {
 }
 
 void drawUmbrella() {
-  fill(20);
+  fill(200, 200, 0);
   arc(mouseX, mouseY - cableHeight, umbrellaWidth, umbrellaHeight, PI, PI+PI, CHORD);
   
   stroke(20);

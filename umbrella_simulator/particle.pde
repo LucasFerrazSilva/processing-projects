@@ -59,7 +59,7 @@ void drawParticles() {
 
 void generateParticles() {  
   for(int i = 0; i < particlesGenerationRate; i++) {
-    float particleXSpeed = random(-1.5, 1.5);
+    float particleXSpeed = random(-5, 5);
     float particleYSpeed = random(-6,-4);
     float hittedUmbrella = 0;
     

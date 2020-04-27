@@ -39,7 +39,7 @@ void drawParticles() {
       particleYSpeed += 0.1;
       particleY += particleYSpeed;
       
-      fill(0, 0, 200, 200);
+      fill(0, 100, 200, 200);
       stroke(0, 0);
       ellipse(particleX, particleY, particleSize, particleSize);
       
@@ -53,7 +53,7 @@ void drawParticles() {
 
 void generateParticles() {  
   for(int i = 0; i < particlesGenerationRate; i++) {
-    float particleXSpeed = random(-1.5, 1.5);
+    float particleXSpeed = random(-3, 3);
     float particleYSpeed = random(-6,-4);
     float hittedUmbrella = 0;
     
