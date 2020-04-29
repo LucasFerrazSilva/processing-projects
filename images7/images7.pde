@@ -2,9 +2,11 @@ PImage img;
 char k = 'a';
 
 void setup() {
-  size(258, 195);
-    
+  size(258, 195);    
   img = loadImage("download.jpeg");
+  
+  //size(960, 960);
+  //img = loadImage("me4.jpg");
   
   displayImage();
 }
@@ -25,7 +27,11 @@ void displayImage() {
       float b2 = brightness(img.pixels[loc2]);
       
       float diff = abs(b1 - b2);
-      pixels[loc1] = color(diff);
+      if(diff > 20) {
+        pixels[loc1] = color(0);
+      } else {
+        pixels[loc1] = color(255);      
+      }
     }
   }
   

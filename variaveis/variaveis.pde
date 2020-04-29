@@ -3,7 +3,7 @@ float yspeed;
 float circleX;
 float circleY;
 
-float hitIncrement = -0.9;
+float hitIncrement = -1;
 
 void setup() {
   size(640, 500);
