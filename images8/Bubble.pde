@@ -13,7 +13,7 @@ class Bubble {
   public Bubble() {
     this.size = int(random(MINIMUM_SIZE, MAXIMUM_SIZE));
     this.y = height - size/2;
-    this.x = int(random(size, width-size));
+    this.x = int(random(size/2, width-size/2));
   }
   
   
