@@ -10,7 +10,7 @@ public class Ball {
   public Ball() {
     this.location = new PVector(width/2, height/2);
     
-    this.velocity = new PVector(2.5, -2);
+    this.velocity = new PVector(4, -3);
   }
   
   
