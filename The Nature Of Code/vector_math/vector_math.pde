@@ -1,25 +1,31 @@
 PVector center;
 PVector mouse;
+PVector diff;
 
 void setup() {
   size(600,400);
+  
+  center = new PVector(width/2, height/2);
 }
 
 void draw() {
-  background(20);
+  background(20);  
   
-  translate(width/2, height/2);
-  
-  noStroke();
-  fill(200);
-  ellipse(0, 0, 5, 5);  
-  
-  center = new PVector(width/2, height/2);
   mouse = new PVector(mouseX, mouseY);
+  diff = new PVector(mouseX, mouseY);
+  diff.sub(center);
   
-  mouse.sub(center);
-  mouse.mult(0.5);
+  stroke(200, 0, 0);
+  line(0, 0, center.x, center.y);
   
-  stroke(200);
+  stroke(0, 200, 0);
   line(0, 0, mouse.x, mouse.y);
+  
+  stroke(0, 0, 200);
+  line(center.x, center.y, center.x+diff.x, center.y+diff.y);
+  
+  float mag = diff.mag();
+  noFill();
+  stroke(100);
+  ellipse(width/2, height/2, mag*2, mag*2);
 }
