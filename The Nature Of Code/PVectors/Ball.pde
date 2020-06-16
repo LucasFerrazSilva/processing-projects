@@ -1,7 +1,7 @@
   public class Ball {
   
   final static int SIZE = 20;
-  final static float AIR_RESISTANCE_FACTOR = 0.99;
+  final static float AIR_RESISTANCE_FACTOR = 0.995;
   final static float WALLS_SPEED_ABSORPTION_FACTOR = 0.5;
   final static float GROUND_SPEED_ABSORPTION_FACTOR = 0.5;
   
@@ -57,19 +57,30 @@
     noStroke();
     fill(200);
     ellipse(this.location.x, this.location.y, SIZE, SIZE);
+    
+    printVelocity();
   }
   
   public void moveTowardsTheMouse() {
     PVector mouseAcceleration = new PVector(mouseX, mouseY);
     
-    mouseAcceleration.sub(this.location);    
-    mouseAcceleration.normalize();
-    mouseAcceleration.mult(dist(this.location.x, this.location.y, mouseX, mouseY) / 200);
+    mouseAcceleration.sub(this.location);
+    mouseAcceleration.div(200);
     
     this.velocity.add(mouseAcceleration);
     
     stroke(200, 0, 0);
     line(this.location.x, this.location.y, mouseX, mouseY);
+  }
+  
+  public void applyWindForce(Wind wind) {
+    this.velocity.x += wind.velocity.x / 10;
+  } 
+  
+  private void printVelocity() {
+    textSize(15);
+    text("X Velocity: " + this.velocity.x, 30, 30);
+    text("Y Velocity: " + this.velocity.y, 30, 60);
   }
 
 }
