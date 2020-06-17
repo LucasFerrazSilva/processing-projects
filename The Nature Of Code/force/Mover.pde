@@ -1,13 +1,17 @@
 class Mover {
   
-  final static int SIZE = 20;
+  int size;
+  float mass;
 
   PVector location;
   PVector speed;
   PVector acceleration;
   
   
-  public Mover() {
+  public Mover(int size) {
+    this.size = size;
+    this.mass = size/10;
+    
     this.location = new PVector(width/2, height/2);
     this.speed = new PVector(0,0);
     this.acceleration = new PVector(0, 0);
@@ -31,11 +35,12 @@ class Mover {
   public void display() {
     stroke(100);
     fill(200);
-    ellipse(this.location.x, this.location.y, SIZE, SIZE);
+    ellipse(this.location.x, this.location.y, size, size);
   }
   
   public void applyForce(PVector force) {
-    this.acceleration.add(force);
+    PVector f = PVector.div(force, this.mass);
+    this.acceleration.add(f);
   }
 
 }
