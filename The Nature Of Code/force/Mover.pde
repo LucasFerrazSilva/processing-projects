@@ -12,7 +12,7 @@ class Mover {
     this.size = size;
     this.mass = size/10;
     
-    this.location = new PVector(width/2, height/2);
+    this.location = new PVector(width/2, 0);
     this.speed = new PVector(0,0);
     this.acceleration = new PVector(0, 0);
   }
@@ -34,7 +34,7 @@ class Mover {
   
   public void display() {
     stroke(100);
-    fill(200);
+    fill(200, 200);
     ellipse(this.location.x, this.location.y, size, size);
   }
   

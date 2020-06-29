@@ -1,0 +1,1 @@
+// Criar um projeto com um chão com diferentes materiais (lama, cimento, etc.), onde cada um tem um "cociente de fricção" diferente. Fazer um objeto se locomover pelo chão e observar a variação de velocidade quando ele passa por cada material 

@@ -1,30 +1,44 @@
-Mover m;
-Mover m2;
+Mover[] movers;
+  
 
 void setup() {
   size(640, 360);
-  m = new Mover(20);
-  m2 = new Mover(40);
+    
+  movers = new Mover[1];
+  
+  int moverSize = 40;
+  
+  for(int i = 0; i < movers.length; i++) {
+    movers[i] = new Mover(moverSize);
+    moverSize -= 10;
+  }
 }
 
 void draw() {
   background(255);
   
-  PVector gravityForce = new PVector(0,0.1);
-  m.applyForce(gravityForce);
-  m2.applyForce(gravityForce);
-  
-  if(mousePressed) {
-    PVector windForce = new PVector(-0.05, 0);  
+  for(Mover m: movers) {
+    //gravity
+    PVector gravityForce = new PVector(0,0.1);
+    gravityForce.mult(m.mass);
+    m.applyForce(gravityForce);
+    
+    // wind
+    PVector windForce = new PVector(0.2, 0);
     m.applyForce(windForce);
-    m2.applyForce(windForce);
+    
+    // friction
+    if(mousePressed) {
+      PVector friction = m.speed.get();
+      friction.normalize();    
+      float c = -0.1;
+      friction.mult(c);
+      m.applyForce(friction);
+    }
+    
+    // move m
+    m.update();
+    m.edges();
+    m.display();
   }
-  
-  m.update();
-  m.edges();
-  m.display();
-  
-  m2.update();
-  m2.edges();
-  m2.display();
 }
