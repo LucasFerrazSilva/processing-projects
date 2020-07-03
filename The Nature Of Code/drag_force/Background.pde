@@ -1,15 +1,15 @@
 class Background {
   
   
-  float airResistanceFactor = 0.01;
+  float airResistanceFactor = 0.005;
   float airYStart = 0;
   float airYSize = 2*height/3;
   
-  float oilResistanceFactor = 0.3;
+  float oilResistanceFactor = 0.2;
   float oilYStart = airYStart + airYSize;
   float oilYSize = 60;
   
-  float waterResistanceFactor = 0.1;
+  float waterResistanceFactor = 0.05;
   float waterYStart = oilYStart + oilYSize;
   float waterYSize = height - waterYStart;
   
@@ -17,7 +17,7 @@ class Background {
   void display() {
     //display air
     noStroke();
-    fill(250, 100);
+    fill(250, 50);
     rect(0, airYStart, width, airYSize);
     
     //display oil

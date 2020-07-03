@@ -33,8 +33,8 @@ class Ball {
    }
    
    public void display() {
-     stroke(100);
-     fill(120);
+     stroke(20);
+     fill(100);
      ellipse(this.location.x, this.location.y, size, size);
    }
    
